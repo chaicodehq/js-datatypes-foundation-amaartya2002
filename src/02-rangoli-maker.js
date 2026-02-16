@@ -47,20 +47,72 @@
  */
 export function repeatPattern(pattern, times) {
   // Your code here
+  if (typeof pattern !== "string" || typeof times !== "number" || !Number.isInteger(times)) {
+    return ""
+  }
+
+  if (times <= 0) {
+    return ""
+  }
+
+  const repeatedPattern = pattern.repeat(times)
+
+  return repeatedPattern
+
 }
 
 export function extractRangoliCenter(design, start, end) {
   // Your code here
+
+  if (typeof design !== "string" || typeof start !== "number" || typeof end !== "number") {
+    return ""
+  }
+
+  const centerPart = design.slice(start, end)
+
+  return centerPart
 }
 
 export function splitAndJoinRangoli(colorString, oldSep, newSep) {
   // Your code here
+
+  if (typeof colorString !== "string") {
+    return ""
+  }
+
+  const colorObj = colorString.split(oldSep)
+
+  const finalColorObj = colorObj.join(newSep)
+
+  return finalColorObj
 }
 
 export function replaceRangoliColor(design, oldColor, newColor) {
   // Your code here
+
+  if (typeof design !== "string" || typeof oldColor !== "string" || typeof newColor !== "string") {
+    return ""
+  }
+
+  const finalString = design.replaceAll(oldColor, newColor)
+
+  return finalString
 }
 
 export function makeRangoliBorder(char, length) {
   // Your code here
+
+  if (typeof char !== "string" || typeof length !== "number") {
+    return ""
+  }
+
+  if (length <= 0) {
+    return ""
+  }
+
+  const repeatedValue = char.repeat(length + 1)
+  const rangoliBorder = repeatedValue.slice(0, length)
+
+  return rangoliBorder
+
 }

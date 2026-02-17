@@ -16,6 +16,7 @@
  *      - Agar cart Array nahi hai (Array.isArray use karo), return -1
  *      - Agar item empty string hai ya string nahi hai, return cart.length without adding
  *      - Example: addToCart(["tamatar", "pyaaz"], "mirchi") => 3
+ * 
  *
  *   2. addUrgentItem(cart, item)
  *      - .unshift() se item ko cart ke BEGINNING mein add karo (pehle khareedna hai!)
@@ -49,20 +50,75 @@
  */
 export function addToCart(cart, item) {
   // Your code here
+
+  if (!Array.isArray(cart)) {
+    return -1
+  }
+
+  if (typeof item !== "string" || item == "") {
+    return cart.length
+  }
+
+  const newArr = cart.push(item)
+
+  return newArr
+
 }
 
 export function addUrgentItem(cart, item) {
   // Your code here
+
+  if (!Array.isArray(cart)) {
+    return []
+  }
+
+  if (typeof item !== "string" || item == "") {
+    return cart
+  }
+
+  cart.unshift(item)
+
+  return cart
+
 }
 
 export function removeLastItem(cart) {
   // Your code here
+  if (!Array.isArray(cart)) {
+    return undefined
+  }
+
+  const removedItem = cart.pop()
+
+  return removedItem
+
 }
 
 export function isInCart(cart, item) {
   // Your code here
+
+  if (!Array.isArray(cart)) {
+    return false
+  }
+
+  if (cart.includes(item)) {
+    return true
+  } else {
+    return false
+  }
 }
 
 export function mergeCarts(cart1, cart2) {
   // Your code here
+
+  if (!Array.isArray(cart1)) {
+    cart1 = []
+  } else if (!Array.isArray(cart2)) {
+    cart2 = []
+  }
+
+  const mergedArray = cart1.concat(cart2)
+
+  return mergedArray
+
 }

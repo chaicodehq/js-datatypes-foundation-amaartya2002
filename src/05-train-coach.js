@@ -49,20 +49,82 @@
  */
 export function findPassenger(passengers, name) {
   // Your code here
+
+  if (!Array.isArray(passengers) || typeof name !== "string") {
+    return undefined
+  }
+
+  // for (let i = 0; i < passengers.length; i++) {
+  //   if (typeof passengers[i].name === "string") {
+  //     passengers[i].name = passengers[i].name.toLowerCase()
+  //   }
+  // }
+
+  const updatedName = name.toLowerCase()
+
+  const finalArr = passengers.find((passenger) => {
+    return typeof passenger.name === "string" && passenger.name.toLowerCase() === updatedName
+  })
+
+  return finalArr
+
 }
 
 export function getPassengerIndex(passengers, name) {
   // Your code here
+  if (!Array.isArray(passengers) || typeof name !== "string") {
+    return -1
+  }
+
+  const indexOfPassenger = passengers.findIndex((passenger) => {
+    return passenger.name.toLowerCase() === name.toLowerCase()
+  })
+
+  return indexOfPassenger
+
+
 }
 
 export function isAnyWaitlisted(passengers) {
   // Your code here
+
+  if (!Array.isArray(passengers) || passengers.length === 0) {
+    return false
+  }
+
+  return passengers.some((passenger) => {
+    return passenger.status === "waitlisted"
+  })
+
 }
 
 export function areAllConfirmed(passengers) {
   // Your code here
+  if (!Array.isArray(passengers) || passengers.length === 0) {
+    return false
+  }
+
+  return passengers.every((passenger) => {
+    return passenger.status === "confirmed"
+  })
 }
 
 export function getWaitlistedPassengers(passengers) {
   // Your code here
+
+  if (!Array.isArray(passengers) || passengers.length === 0) {
+    return []
+  }
+
+  function cllback(passenger) {
+
+    if (passenger.status === "waitlisted") {
+      return passenger
+    }
+
+  }
+
+  const waitlistedPassengers = passengers.filter(cllback)
+
+  return waitlistedPassengers
 }

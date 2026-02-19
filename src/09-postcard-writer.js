@@ -53,20 +53,109 @@
  */
 export function writePostcard(sender, receiver, message) {
   // Your code here
+  if (typeof sender !== "string" || typeof receiver !== "string" || typeof message !== "string") {
+    return ""
+  }
+
+  const updatedSender = sender.trim()
+  const updatedReceiver = receiver.trim()
+  const updatedMessage = message.trim()
+
+  if (!updatedSender || !updatedReceiver || !updatedMessage) {
+    return ""
+  }
+
+  const postCard = `Priy ${updatedReceiver},\n\n${updatedMessage}\n\nAapka/Aapki,\n${updatedSender}`
+  // console.log(postCard);
+
+  return postCard
 }
 
 export function isValidPincode(code) {
   // Your code here
+
+  // if (typeof code !== "string") {
+  //   return false
+  // }
+
+  // const checkPinCode = code.startsWith("0")
+
+  // if (checkPinCode) {
+  //   return false
+  // }
+
+  // if (code.length !== 6) {
+  //   return false
+  // }
+
+  // const digitsCheck = /^[0-9]+$/.test(code)
+
+  // if (!digitsCheck) {
+  //   return false
+  // }
+
+  // return true
+
+  return (
+    typeof code === "string" && /^[1-9][0-9]{5}$/.test(code)
+  )
+
 }
 
 export function formatPostcardField(label, value, width) {
   // Your code here
+
+  if (typeof label !== "string" || typeof value !== "string") {
+    return ""
+  }
+  let formattedText = null
+  if (width) {
+    formattedText = `${label.padEnd(width)}: ${value}`
+  } else {
+    formattedText = `${label.padEnd(12)}: ${value}`
+  }
+
+  //console.log(formattedText);
+
+
+  return formattedText
 }
 
 export function isFromState(address, stateCode) {
   // Your code here
+  if (typeof address !== "string" || typeof stateCode !== "string") {
+    return false
+  }
+
+  if (address.endsWith(stateCode)) {
+    return true
+  } else {
+    return false
+  }
+
+
 }
 
 export function countVowels(message) {
   // Your code here
+  if (typeof message !== "string" || message === "") {
+    return 0
+  }
+
+  const vowelArr = message.match(/[aeiouAEIOU]/g)
+
+  if (Array.isArray(vowelArr)) {
+    return vowelArr.length
+  } else if (vowelArr === null) {
+    return 0
+  }
+
+  /**
+   * Cleaner return 
+   * 
+   * return volwelArr ? vowelArr.length : 0
+   * 
+   */
+
+
 }

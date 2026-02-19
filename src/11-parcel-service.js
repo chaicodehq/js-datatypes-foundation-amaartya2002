@@ -1,3 +1,5 @@
+import { returnStatement } from "@babel/types"
+
 /**
  * 📮 Dak Ghar Parcel Service - JSON & Type Conversion
  *
@@ -53,20 +55,53 @@
  */
 export function parcelToJSON(parcel) {
   // Your code here
+  if (typeof parcel === "undefined") return ""
+
+  try {
+
+    const jsonString = JSON.stringify(parcel)
+    return jsonString
+
+  } catch (error) {
+    return ""
+  }
 }
 
 export function jsonToParcel(jsonString) {
   // Your code here
+  if (typeof jsonString !== "string") {
+    return null
+  }
+
+  try {
+    const parsedToJson = JSON.parse(jsonString)
+    return parsedToJson
+  } catch (error) {
+    return null
+  }
 }
 
 export function convertToString(value) {
   // Your code here
+  const convertedString = String(value)
+  return convertedString
 }
 
 export function convertToNumber(value) {
   // Your code here
+  const convertedNumber = Number(value)
+  return convertedNumber
 }
 
 export function stringToChars(str) {
   // Your code here
+  if (typeof str !== "string" || str === "") {
+    return []
+  }
+
+  const splitString = Array.from(str)
+
+  return splitString
+
+
 }
